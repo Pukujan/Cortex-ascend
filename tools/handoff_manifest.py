@@ -3,9 +3,9 @@ from __future__ import annotations
 import ast
 import re
 from pathlib import Path
-from typing import TypeAlias, cast
+from typing import cast
 
-YamlValue: TypeAlias = None | bool | int | str | list["YamlValue"] | dict[str, "YamlValue"]
+type YamlValue = None | bool | int | str | list["YamlValue"] | dict[str, "YamlValue"]
 
 
 class ManifestError(ValueError):
@@ -53,9 +53,7 @@ def _tokens(text: str) -> list[tuple[int, str, int]]:
             continue
         indent = len(raw) - len(raw.lstrip(" "))
         if indent % 2:
-            raise ManifestError(
-                f"line {number}: indentation must use multiples of two spaces"
-            )
+            raise ManifestError(f"line {number}: indentation must use multiples of two spaces")
         tokens.append((indent, raw[indent:], number))
     return tokens
 
@@ -85,8 +83,7 @@ def _parse_map(
             break
         if actual_indent > indent:
             raise ManifestError(
-                f"line {line_number}: unexpected indentation {actual_indent}; "
-                f"expected {indent}"
+                f"line {line_number}: unexpected indentation {actual_indent}; expected {indent}"
             )
         if text.startswith("- "):
             break
@@ -203,7 +200,7 @@ def _mapping(parent: dict[str, YamlValue], key: str) -> dict[str, YamlValue]:
     value = parent.get(key)
     if not isinstance(value, dict):
         raise ManifestError(f"missing mapping {key!r}")
-    return cast(dict[str, YamlValue], value)
+    return value
 
 
 def _string(parent: dict[str, YamlValue], key: str) -> str:

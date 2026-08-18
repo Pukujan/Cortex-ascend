@@ -16,7 +16,7 @@ DOC_PATHS = (Path("docs/HANDOFF.md"), Path("docs/CURRENT_STATE.md"))
 def _mapping(parent: dict[str, YamlValue], key: str) -> dict[str, YamlValue]:
     value = parent[key]
     assert isinstance(value, dict)
-    return cast(dict[str, YamlValue], value)
+    return value
 
 
 def _strings(parent: dict[str, YamlValue], key: str) -> list[str]:
@@ -49,8 +49,10 @@ def render_facts(manifest: dict[str, YamlValue]) -> str:
 
     lines = [
         BEGIN,
-        "> Generated from `handoff.yaml` by `tools/render_handoff.py`. "
-        "Do not edit this block directly.",
+        (
+            "> Generated from `handoff.yaml` by `tools/render_handoff.py`. "
+            "Do not edit this block directly."
+        ),
         "",
         f"- Repository: `{project['repository']}` (default branch `{project['default_branch']}`)",
         f"- Project status: `{project['status']}`",
@@ -69,9 +71,7 @@ def render_facts(manifest: dict[str, YamlValue]) -> str:
 
 def replace_generated_block(text: str, block: str, path: Path) -> str:
     if text.count(BEGIN) != 1 or text.count(END) != 1:
-        raise ManifestError(
-            f"{path}: expected exactly one generated handoff facts marker pair"
-        )
+        raise ManifestError(f"{path}: expected exactly one generated handoff facts marker pair")
     start = text.index(BEGIN)
     finish = text.index(END, start) + len(END)
     return text[:start] + block + text[finish:]

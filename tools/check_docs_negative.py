@@ -53,9 +53,7 @@ def main() -> int:
             stale = _run(str(TOOLS / "render_handoff.py"), "--repo-root", str(root))
             combined = stale.stdout + stale.stderr
             if stale.returncode == 0 or "generated handoff facts are stale" not in combined:
-                failures.append(
-                    "stale-doc fixture was not rejected for generated handoff drift"
-                )
+                failures.append("stale-doc fixture was not rejected for generated handoff drift")
 
     malformed = _run(
         str(TOOLS / "render_handoff.py"),
@@ -64,9 +62,7 @@ def main() -> int:
     )
     malformed_output = malformed.stdout + malformed.stderr
     if malformed.returncode == 0 or "missing mapping 'current_gate'" not in malformed_output:
-        failures.append(
-            "incomplete handoff fixture was not rejected for missing current_gate"
-        )
+        failures.append("incomplete handoff fixture was not rejected for missing current_gate")
 
     pr_result = _run(
         str(TOOLS / "check_pr_contract.py"),

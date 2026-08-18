@@ -3,9 +3,9 @@ from __future__ import annotations
 import argparse
 import ast
 import sys
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
 
 PACKAGE = "cortex_ascend"
 LAYERS = ("kernel", "ports", "application", "adapters", "cli")
