@@ -16,11 +16,14 @@ current_gate:
   id: G0
   name: Foundation and bootstrap qualification
   issue: 1
-  current_child_issue: 7
+  current_child_issue: null
   implemented_capabilities:
     - python_3_12_plus_project_metadata
     - uv_lockfile
     - src_package_skeleton
+    - architecture_boundary_checker
+    - kernel_third_party_deny_by_default
+    - architecture_negative_fixtures
   authorized_work:
     - repository foundation
     - linting/formatting/strict typing
@@ -52,6 +55,13 @@ g0_execution:
     - 16
     - 17
     - 18
+  completed_child_issues:
+    - 7
+    - 10
+  active_child_issues:
+    - 8
+    - 9
+    - 11
   parallel_wave_after_g01:
     - 8
     - 9
@@ -178,5 +188,5 @@ fresh_session_start:
     - docs/CURRENT_STATE.md
     - handoff.yaml
     - issue #1
-    - current G0 child issue
-  instruction: do not reopen architecture absent a declared reopening trigger; execute G0 child issues according to recorded dependencies only
+    - active G0 child issue
+  instruction: do not reopen architecture absent a declared reopening trigger; execute active G0 child issues according to recorded dependencies only

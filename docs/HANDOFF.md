@@ -13,15 +13,15 @@ Architecture is frozen. Do not reopen it absent a declared reopening trigger.
 3. `docs/PHASE_REQUIREMENTS_AND_INVARIANTS.md`
 4. `docs/CURRENT_STATE.md`
 5. `handoff.yaml`
-6. GitHub issue #1 and the currently authorized G0 child issue
+6. GitHub issue #1 and the active G0 child issue
 
 ## Current authorization
 
 Only `G0 — Foundation and bootstrap qualification` is authorized.
 
-G0 has been decomposed into child issues #7–#18. The current bounded implementation unit is #7 (`G0.1`): establish Python 3.12+ project metadata, `uv`, committed lockfile, and a minimal `src/` package skeleton. Do **not** implement semantic kernel behavior.
+G0.1 (#7) is merged. Executable architecture boundaries (#10) are complete after this merge. Active parallel-foundation work is #8 (Ruff/Mypy), #9 (Pytest/Hypothesis), and #11 (handoff/docs/PR contract). These converge at #12 (`make check`). Their existence does not authorize G1 semantics.
 
-After #7 merges, #8/#9/#10/#11 form the bounded parallel foundation wave and converge at #12 (`make check`). Later G0 child issues remain dependency-gated; their existence does not authorize G1 semantics.
+The architecture boundary is now mechanically checked with a stdlib-only equivalent to Import Linter. During G0 the kernel may import only Python standard-library modules and `cortex_ascend` internals; third-party imports are deny-by-default.
 
 ## G0 mission
 
@@ -47,7 +47,9 @@ Build a foundation that mechanically rejects bad architecture and stale project 
 adapters -> application -> kernel
 ```
 
-The kernel cannot import AWS, AgentCore, LiteLLM, OpenCode, FOSSIL, GitHub, graph, orchestration, or model SDKs.
+Ports are inward-facing capability contracts; adapters may depend on ports, and ports may depend on kernel types. Kernel cannot depend outward on ports, application, adapters, or CLI.
+
+The kernel cannot import AWS, AgentCore, LiteLLM, OpenCode, FOSSIL, GitHub, graph, orchestration, or model SDKs. During G0 this is enforced more strictly as an empty third-party allowlist.
 
 Initial machine-readable semantic representation is a minimal immutable `WorkContract`, not a universal Spec IR.
 
