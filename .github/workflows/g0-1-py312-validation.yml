@@ -1,0 +1,43 @@
+name: G0.1 Python 3.12 validation
+
+on:
+  push:
+    branches:
+      - validation/g0-1-py312
+
+permissions:
+  contents: read
+
+jobs:
+  validate-python-312:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch exact G0.1 candidate
+        run: |
+          git clone --no-checkout https://github.com/Pukujan/Cortex-ascend.git repo
+          cd repo
+          git checkout c80671b6ddf483b360b78f1149f76ebd8fe0ecc8
+          test "$(git rev-parse HEAD)" = "c80671b6ddf483b360b78f1149f76ebd8fe0ecc8"
+      - name: Validate minimum Python version and locked environment
+        run: |
+          cd repo
+          python3.12 --version
+          python3.12 -m pip install --disable-pip-version-check uv==0.10.0
+          python3.12 -m uv lock --check --python 3.12
+          python3.12 -m uv sync --frozen --python 3.12
+          PYTHONPATH=src .venv/bin/python -c 'import cortex_ascend; print(cortex_ascend.__version__)'
+      - name: Prove stale lock rejection
+        run: |
+          cd repo
+          cp pyproject.toml pyproject.toml.orig
+          python3.12 - <<'PY'
+          from pathlib import Path
+          path = Path('pyproject.toml')
+          text = path.read_text()
+          path.write_text(text.replace('version = "0.0.0"', 'version = "0.0.1"'))
+          PY
+          if python3.12 -m uv lock --check --python 3.12; then
+            echo 'ERROR: stale lock unexpectedly accepted'
+            exit 1
+          fi
+          mv pyproject.toml.orig pyproject.toml
