@@ -125,7 +125,7 @@ model_strategy:
       - hypothesis
       - mutation-testing
       - selected-formal-checker
-      - artifact/hash_checks
+      - artifact/hash checks
     role: mechanically adjudicate covered predicates
 
 formal_methods:
