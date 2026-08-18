@@ -2,14 +2,14 @@
 
 **Current decision:** `REVISE -> START G0 ONLY`  
 **Current authorized gate:** `G0 — Foundation and bootstrap qualification`  
-**Current implementation status:** planning/genesis only; no semantic kernel is authorized or implemented yet.
+**Current implementation status:** G0 foundation implementation has started; the G0.1 Python/uv substrate is present on this branch, but no semantic kernel is authorized or implemented.
 
 ## Current authority
 
 1. `docs/ASCEND_FOUNDATION_AND_BUILD_PLAN.md` — architecture, constitution, adversarial findings, bootstrap trust ladder, implementation sequence.
 2. `docs/PHASE_REQUIREMENTS_AND_INVARIANTS.md` — per-phase requirements, invariants, evidence and exit conditions.
 3. `handoff.yaml` — machine-readable fresh-session bootstrap state.
-4. GitHub issues #1–#6 — bounded implementation work packages.
+4. GitHub issue #1 and child issues #7–#18 — bounded G0 implementation work packages.
 
 Historical Cortex V6 material is donor/evidence/failure-corpus material. It is not current architecture authority for Cortex Ascend.
 
@@ -21,12 +21,14 @@ Historical Cortex V6 material is donor/evidence/failure-corpus material. It is n
 - explicit bootstrap trust model so Ascend does not self-certify its first implementation;
 - phase requirement/invariant contract;
 - machine-readable handoff;
-- six bounded build issues covering G0 through G10.
+- bounded build issues covering G0 through G10;
+- G0 child issues #7–#18 with dependency/evidence contracts;
+- Python 3.12+ project metadata;
+- committed `uv.lock`;
+- minimal `src/cortex_ascend/` package skeleton with no semantic behavior.
 
 ## What does not exist yet
 
-- Python project scaffold;
-- `uv.lock`;
 - Ruff/Mypy/Pytest/Hypothesis/Import Linter configuration;
 - reproducible `make check`;
 - GitHub Actions qualification workflows;
@@ -44,24 +46,16 @@ Historical Cortex V6 material is donor/evidence/failure-corpus material. It is n
 
 ## Immediate next work
 
-Only issue #1 is authorized for execution.
+Only G0 is authorized. The current bounded execution unit is child issue #7 (`G0.1`).
 
-The new implementation session should decompose #1 into small PR-sized G0 work packages while preserving the requirements and invariants in `docs/PHASE_REQUIREMENTS_AND_INVARIANTS.md`.
+After #7 merges, the safe parallel wave is:
 
-Recommended G0 order:
+1. #8 — Ruff + strict Mypy.
+2. #9 — Pytest + Hypothesis baseline.
+3. #10 — Import Linter and explicit kernel dependency boundary.
+4. #11 — machine-readable handoff/current-state and PR-contract mechanics.
 
-1. Python/uv/src-layout skeleton.
-2. Ruff + strict Mypy.
-3. Pytest + Hypothesis baseline.
-4. Import Linter and explicit kernel dependency boundary.
-5. single reproducible `make check`.
-6. CI with locked/pinned provenance controls.
-7. negative foundation fixtures proving expected failures.
-8. machine-readable handoff/current-state generation or validation.
-9. branch/ruleset/required-check enforcement.
-10. sanitized OpenCode/LiteLLM bootstrap qualification if the lane is needed for consequential development.
-11. genuinely independent external plan critique and disposition.
-12. close G0 only after all exit evidence exists.
+Those converge at #12, which establishes the single reproducible `make check`. CI/provenance (#13), protected-main enforcement (#14), consolidated negative qualification (#15), independent critique (#17), and final G0 exit (#18) follow according to their recorded dependencies. #16 is conditional on consequential use of the bootstrap model lane.
 
 ## Credential/bootstrap configuration
 

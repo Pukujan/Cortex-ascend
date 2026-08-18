@@ -13,13 +13,15 @@ Architecture is frozen. Do not reopen it absent a declared reopening trigger.
 3. `docs/PHASE_REQUIREMENTS_AND_INVARIANTS.md`
 4. `docs/CURRENT_STATE.md`
 5. `handoff.yaml`
-6. GitHub issue #1
+6. GitHub issue #1 and the currently authorized G0 child issue
 
 ## Current authorization
 
 Only `G0 — Foundation and bootstrap qualification` is authorized.
 
-The next session should decompose issue #1 into small PR-sized foundation work packages. It should **not** begin semantic kernel implementation merely because later issues already exist.
+G0 has been decomposed into child issues #7–#18. The current bounded implementation unit is #7 (`G0.1`): establish Python 3.12+ project metadata, `uv`, committed lockfile, and a minimal `src/` package skeleton. Do **not** implement semantic kernel behavior.
+
+After #7 merges, #8/#9/#10/#11 form the bounded parallel foundation wave and converge at #12 (`make check`). Later G0 child issues remain dependency-gated; their existence does not authorize G1 semantics.
 
 ## G0 mission
 
