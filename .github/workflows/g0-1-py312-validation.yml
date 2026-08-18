@@ -1,12 +1,9 @@
 name: G0.1 Python 3.12 validation
 
 on:
-  push:
-    branches:
-      - validation/g0-1-py312
   pull_request:
     branches:
-      - main
+      - validation/g0-1-py312
 
 permissions:
   contents: read
