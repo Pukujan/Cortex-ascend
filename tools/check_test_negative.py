@@ -39,7 +39,7 @@ CASES = (
             "--hypothesis-seed=1",
             "tests/test_harness_fixtures/property_failure",
         ),
-        ("Falsifying example", "value=0"),
+        ("Failing test case", "value=0"),
     ),
 )
 
