@@ -6,6 +6,22 @@
 
 Architecture is frozen. Do not reopen it absent a declared reopening trigger.
 
+## Generated current facts
+
+<!-- BEGIN GENERATED HANDOFF FACTS -->
+> Generated from `handoff.yaml` by `tools/render_handoff.py`. Do not edit this block directly.
+
+- Repository: `Pukujan/Cortex-ascend` (default branch `main`)
+- Project status: `REVISE -> START G0 ONLY`
+- Architecture frozen: `yes`
+- Current gate: `G0 — Foundation and bootstrap qualification` (issue #1)
+- Current child issue: none
+- Implemented capabilities: `python_3_12_plus_project_metadata`, `uv_lockfile`, `src_package_skeleton`, `architecture_boundary_checker`, `kernel_third_party_deny_by_default`, `architecture_negative_fixtures`, `handoff_manifest_validation`, `bounded_generated_handoff_facts`, `pr_contract_checker`, `adr_structure`, `docs_impact_policy`
+- Completed G0 child issues: #7, #10, #11
+- Active G0 child issues: #8, #9
+- G0 convergence issue: #12
+<!-- END GENERATED HANDOFF FACTS -->
+
 ## Read first
 
 1. `README.md`
@@ -19,9 +35,11 @@ Architecture is frozen. Do not reopen it absent a declared reopening trigger.
 
 Only `G0 — Foundation and bootstrap qualification` is authorized.
 
-G0.1 (#7) is merged. Executable architecture boundaries (#10) are complete after this merge. Active parallel-foundation work is #8 (Ruff/Mypy), #9 (Pytest/Hypothesis), and #11 (handoff/docs/PR contract). These converge at #12 (`make check`). Their existence does not authorize G1 semantics.
+G0.1 (#7), executable architecture boundaries (#10), and handoff/docs/PR-contract mechanics (#11) are complete after this merge. Active parallel-foundation work is #8 (Ruff/Mypy) and #9 (Pytest/Hypothesis); they converge at #12 (`make check`). Their existence does not authorize G1 semantics.
 
-The architecture boundary is now mechanically checked with a stdlib-only equivalent to Import Linter. During G0 the kernel may import only Python standard-library modules and `cortex_ascend` internals; third-party imports are deny-by-default.
+Generated facts in this document and `docs/CURRENT_STATE.md` are derived from `handoff.yaml`. `tools/render_handoff.py` may update only the bounded generated blocks; architectural prose, ADRs, and the constitution remain review-owned.
+
+The architecture boundary is mechanically checked with a stdlib-only equivalent to Import Linter. During G0 the kernel may import only Python standard-library modules and `cortex_ascend` internals; third-party imports are deny-by-default.
 
 ## G0 mission
 

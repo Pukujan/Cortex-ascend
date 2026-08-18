@@ -24,6 +24,11 @@ current_gate:
     - architecture_boundary_checker
     - kernel_third_party_deny_by_default
     - architecture_negative_fixtures
+    - handoff_manifest_validation
+    - bounded_generated_handoff_facts
+    - pr_contract_checker
+    - adr_structure
+    - docs_impact_policy
   authorized_work:
     - repository foundation
     - linting/formatting/strict typing
@@ -58,10 +63,10 @@ g0_execution:
   completed_child_issues:
     - 7
     - 10
+    - 11
   active_child_issues:
     - 8
     - 9
-    - 11
   parallel_wave_after_g01:
     - 8
     - 9
