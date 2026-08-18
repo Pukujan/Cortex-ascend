@@ -1,0 +1,15 @@
+handoff_version: 1
+project:
+  name: Cortex Ascend
+  repository: Pukujan/Cortex-ascend
+  default_branch: main
+  status: REVISE -> START G0 ONLY
+  architecture_frozen: true
+authority:
+  canonical_plan: docs/ASCEND_FOUNDATION_AND_BUILD_PLAN.md
+  phase_contract: docs/PHASE_REQUIREMENTS_AND_INVARIANTS.md
+  current_state: docs/CURRENT_STATE.md
+fresh_session_start:
+  read_order:
+    - README.md
+  instruction: invalid fixture deliberately omits current_gate
