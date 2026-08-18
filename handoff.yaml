@@ -1,0 +1,152 @@
+handoff_version: 1
+project:
+  name: Cortex Ascend
+  repository: Pukujan/Cortex-ascend
+  default_branch: main
+  status: REVISE -> START G0 ONLY
+  architecture_frozen: true
+
+authority:
+  canonical_plan: docs/ASCEND_FOUNDATION_AND_BUILD_PLAN.md
+  phase_contract: docs/PHASE_REQUIREMENTS_AND_INVARIANTS.md
+  current_state: docs/CURRENT_STATE.md
+  historical_v6_is_authority: false
+
+current_gate:
+  id: G0
+  name: Foundation and bootstrap qualification
+  issue: 1
+  authorized_work:
+    - repository foundation
+    - linting/formatting/strict typing
+    - architecture-boundary enforcement
+    - tests/property-test foundation
+    - CI/provenance/ruleset work
+    - docs/handoff automation
+    - sanitized bootstrap transport qualification
+    - independent external plan critique
+  forbidden_work:
+    - substantive semantic kernel implementation
+    - production AgentCore execution
+    - broad autonomous repository mutation
+    - universal Spec IR implementation
+    - treating Ascend as its own qualification authority
+    - claiming FOSSIL ingestion without canonical receipt
+
+next_sequence:
+  - gate: G0
+    issue: 1
+  - gate: G1-G2
+    issue: 2
+  - gate: G3
+    issue: 3
+  - gate: G4-G5
+    issue: 4
+  - gate: G6-G7
+    issue: 5
+  - gate: G8-G10
+    issue: 6
+
+stable_invariants:
+  - id: ASC-INV-FND-001
+    summary: prohibited infrastructure dependencies cannot enter kernel while required checks are green
+  - id: ASC-INV-FND-003
+    summary: semantic changes cannot be merge-complete with stale required handoff/current-state docs
+  - id: ASC-INV-KRN-001
+    summary: stale project base or generation cannot satisfy current-work evidence requirements
+  - id: ASC-INV-KRN-003
+    summary: evidence for one artifact cannot admit another artifact
+  - id: ASC-INV-MDL-002
+    summary: unexpected model substitution cannot satisfy an exact-model seat
+  - id: ASC-INV-TRUST-001
+    summary: worker compromise must not grant sealed verifier or holdout access
+  - id: ASC-INV-ADV-001
+    summary: model agreement is never a pass oracle
+  - id: ASC-INV-BOOT-001
+    summary: Ascend is not evidence for correctness of the first Ascend implementation
+  - id: ASC-INV-FOS-002
+    summary: Ascend must remain operational if FOSSIL is unavailable
+
+model_strategy:
+  qwen:
+    intended_roles:
+      - builder
+      - repository-review
+      - test-generation
+      - semantic-mutant-generation
+      - distributed-failure-search
+  vibethinker_3b:
+    phase: G6-G7
+    intended_roles:
+      - formal-adversary
+      - mathematical-counterexample-generation
+    authority: none
+    retention_rule: keep only if benchmark shows unique reproducible value
+  frontier_multivendor:
+    intended_roles:
+      - architecture-red-team
+      - security-red-team
+      - distributed-systems-red-team
+      - independent-critique
+    authority: none
+  deterministic_oracles:
+    examples:
+      - compiler
+      - pytest
+      - hypothesis
+      - mutation-testing
+      - selected-formal-checker
+      - artifact/hash checks
+    role: mechanically adjudicate covered predicates
+
+formal_methods:
+  phase: G3
+  bakeoff:
+    - TLA+/TLC
+    - P/P-Checker
+    - FizzBee
+  rule: select one primary distributed formalism after bounded comparison
+  lean:
+    mandatory: false
+    entry_condition: theorem-shaped pure-kernel obligation earns additional assurance value
+  z3_symbolic:
+    mandatory: false
+    entry_condition: small bounded constraint/predicate benefits from symbolic solving
+
+trust_model:
+  bootstrap_root:
+    - repository owner
+    - Git object identity
+    - GitHub repository controls
+    - deterministic external CI/tooling
+    - explicit external/independent review
+  worker_and_verifier_same_trust_domain: false
+  hidden_holdout_in_public_repo: false
+  model_can_admit_own_work: false
+
+secrets_bootstrap:
+  rule: credentials are provisioned through GitHub/AWS secret stores and never committed
+  expected_names:
+    - LITELLM_API_KEY
+    - QWEN_API_KEY
+  configuration_variables:
+    - LITELLM_BASE_URL
+    - QWEN_BASE_URL
+  note: if an endpoint URL embeds credentials, store it as a secret instead of a variable
+  opencode_bootstrap: local Codex may provision secrets/configuration, but qualification must use sanitized fixtures before consequential repository work
+
+fossil:
+  runtime_dependency: false
+  canonical_write_required_for_claim: true
+  current_receipt: null
+  status: not integrated; planned for G10
+
+fresh_session_start:
+  read_order:
+    - README.md
+    - docs/ASCEND_FOUNDATION_AND_BUILD_PLAN.md
+    - docs/PHASE_REQUIREMENTS_AND_INVARIANTS.md
+    - docs/CURRENT_STATE.md
+    - handoff.yaml
+    - issue #1
+  instruction: do not reopen architecture absent a declared reopening trigger; decompose and execute G0 only
