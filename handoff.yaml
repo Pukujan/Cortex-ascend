@@ -16,6 +16,11 @@ current_gate:
   id: G0
   name: Foundation and bootstrap qualification
   issue: 1
+  current_child_issue: 7
+  implemented_capabilities:
+    - python_3_12_plus_project_metadata
+    - uv_lockfile
+    - src_package_skeleton
   authorized_work:
     - repository foundation
     - linting/formatting/strict typing
@@ -32,6 +37,30 @@ current_gate:
     - universal Spec IR implementation
     - treating Ascend as its own qualification authority
     - claiming FOSSIL ingestion without canonical receipt
+
+g0_execution:
+  child_issues:
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    - 16
+    - 17
+    - 18
+  parallel_wave_after_g01:
+    - 8
+    - 9
+    - 10
+    - 11
+  convergence_issue: 12
+  conditional_transport_issue: 16
+  independent_critic_issue: 17
+  exit_issue: 18
 
 next_sequence:
   - gate: G0
@@ -96,7 +125,7 @@ model_strategy:
       - hypothesis
       - mutation-testing
       - selected-formal-checker
-      - artifact/hash checks
+      - artifact/hash_checks
     role: mechanically adjudicate covered predicates
 
 formal_methods:
@@ -149,4 +178,5 @@ fresh_session_start:
     - docs/CURRENT_STATE.md
     - handoff.yaml
     - issue #1
-  instruction: do not reopen architecture absent a declared reopening trigger; decompose and execute G0 only
+    - current G0 child issue
+  instruction: do not reopen architecture absent a declared reopening trigger; execute G0 child issues according to recorded dependencies only
