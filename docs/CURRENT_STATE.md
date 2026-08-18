@@ -2,7 +2,7 @@
 
 **Current decision:** `REVISE -> START G0 ONLY`  
 **Current authorized gate:** `G0 — Foundation and bootstrap qualification`  
-**Current implementation status:** G0 foundation implementation has started; the G0.1 Python/uv substrate is present on this branch, but no semantic kernel is authorized or implemented.
+**Current implementation status:** G0.1 is merged and the bounded G0 parallel foundation wave is active. No semantic kernel is authorized or implemented.
 
 ## Current authority
 
@@ -25,11 +25,15 @@ Historical Cortex V6 material is donor/evidence/failure-corpus material. It is n
 - G0 child issues #7–#18 with dependency/evidence contracts;
 - Python 3.12+ project metadata;
 - committed `uv.lock`;
-- minimal `src/cortex_ascend/` package skeleton with no semantic behavior.
+- minimal `src/cortex_ascend/` package skeleton with no semantic behavior;
+- explicit `kernel`, `ports`, `application`, `adapters`, and `cli` boundary packages;
+- stdlib-only executable architecture checker enforcing inward dependencies;
+- deny-by-default kernel third-party import policy;
+- deliberate architecture negative fixtures for prohibited imports, reverse dependencies, and cycles.
 
 ## What does not exist yet
 
-- Ruff/Mypy/Pytest/Hypothesis/Import Linter configuration;
+- Ruff/Mypy/Pytest/Hypothesis project configuration;
 - reproducible `make check`;
 - GitHub Actions qualification workflows;
 - protected-main required rules/checks;
@@ -46,16 +50,17 @@ Historical Cortex V6 material is donor/evidence/failure-corpus material. It is n
 
 ## Immediate next work
 
-Only G0 is authorized. The current bounded execution unit is child issue #7 (`G0.1`).
+Only G0 is authorized. G0.1 (#7) and executable architecture boundaries (#10) are complete after this merge.
 
-After #7 merges, the safe parallel wave is:
+The remaining active parallel-foundation work is:
 
 1. #8 — Ruff + strict Mypy.
 2. #9 — Pytest + Hypothesis baseline.
-3. #10 — Import Linter and explicit kernel dependency boundary.
-4. #11 — machine-readable handoff/current-state and PR-contract mechanics.
+3. #11 — machine-readable handoff/current-state and PR-contract mechanics.
 
 Those converge at #12, which establishes the single reproducible `make check`. CI/provenance (#13), protected-main enforcement (#14), consolidated negative qualification (#15), independent critique (#17), and final G0 exit (#18) follow according to their recorded dependencies. #16 is conditional on consequential use of the bootstrap model lane.
+
+Exact CPython 3.12 execution remains a G0 exit obligation in #13; G0.1 was validated on a satisfying 3.13 interpreter in the available offline bootstrap runner.
 
 ## Credential/bootstrap configuration
 
