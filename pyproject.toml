@@ -9,6 +9,8 @@ dependencies = []
 dev = [
     "mypy==2.3.1",
     "ruff==0.16.3",
+    "hypothesis==6.165.10",
+    "pytest==9.1.1",
 ]
 
 [tool.uv]
@@ -28,3 +30,8 @@ python_version = "3.12"
 strict = true
 files = ["src/cortex_ascend", "tools"]
 exclude = "(^|/)tests/(architecture|docs|static)/fixtures/"
+
+[tool.pytest.ini_options]
+testpaths = ["tests/unit", "tests/property"]
+pythonpath = ["src"]
+addopts = ["--strict-config", "--strict-markers"]
