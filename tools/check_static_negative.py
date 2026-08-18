@@ -58,8 +58,7 @@ def main() -> int:
             failures.append(f"{case.name}: invalid fixture unexpectedly passed")
         elif case.expected not in combined:
             failures.append(
-                f"{case.name}: expected diagnostic {case.expected!r} not found; "
-                f"output={combined!r}"
+                f"{case.name}: expected diagnostic {case.expected!r} not found; output={combined!r}"
             )
 
     if failures:
