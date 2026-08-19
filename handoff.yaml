@@ -37,6 +37,7 @@ current_gate:
     - cpython_3_12_ci_runtime
     - oidc_future_aws_credential_path
     - credential_history_scanning
+    - independent_critic_receipt
   authorized_work:
     - repository foundation
     - linting/formatting/strict typing
@@ -77,6 +78,7 @@ g0_execution:
     - 12
   active_child_issues:
     - 13
+    - 17
   parallel_wave_after_g01:
     - 8
     - 9

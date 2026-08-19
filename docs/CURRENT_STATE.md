@@ -2,7 +2,7 @@
 
 **Current decision:** `REVISE -> START G0 ONLY`  
 **Current authorized gate:** `G0 — Foundation and bootstrap qualification`  
-**Current implementation status:** G0.1–G0.6 foundations are complete. G0.7 GitHub Actions qualification is in progress. No semantic kernel is authorized or implemented.
+**Current implementation status:** G0.1–G0.6 foundations complete. G0.7 (CI/provenance #13) PR open. G0.11 (#17 independent critique) complete, adjudicated, with formal counterexample (architecture checker bypass) tracked for fix.
 
 ## Generated current facts
 
@@ -14,9 +14,9 @@
 - Architecture frozen: `yes`
 - Current gate: `G0 — Foundation and bootstrap qualification` (issue #1)
 - Current child issue: #13
-- Implemented capabilities: `python_3_12_plus_project_metadata`, `uv_lockfile`, `src_package_skeleton`, `architecture_boundary_checker`, `kernel_third_party_deny_by_default`, `architecture_negative_fixtures`, `handoff_manifest_validation`, `bounded_generated_handoff_facts`, `pr_contract_checker`, `adr_structure`, `docs_impact_policy`, `ruff_strict_mypy_gates`, `pytest_hypothesis_harness`, `reproducible_make_check`, `github_actions_qualification`, `sha_pinned_third_party_actions`, `cpython_3_12_ci_runtime`, `oidc_future_aws_credential_path`, `credential_history_scanning`
+- Implemented capabilities: `python_3_12_plus_project_metadata`, `uv_lockfile`, `src_package_skeleton`, `architecture_boundary_checker`, `kernel_third_party_deny_by_default`, `architecture_negative_fixtures`, `handoff_manifest_validation`, `bounded_generated_handoff_facts`, `pr_contract_checker`, `adr_structure`, `docs_impact_policy`, `ruff_strict_mypy_gates`, `pytest_hypothesis_harness`, `reproducible_make_check`, `github_actions_qualification`, `sha_pinned_third_party_actions`, `cpython_3_12_ci_runtime`, `oidc_future_aws_credential_path`, `credential_history_scanning`, `independent_critic_receipt`
 - Completed G0 child issues: #7, #8, #9, #10, #11, #12
-- Active G0 child issues: #13
+- Active G0 child issues: #13, #17
 - G0 convergence issue: #12
 <!-- END GENERATED HANDOFF FACTS -->
 
