@@ -23,6 +23,9 @@ Ruff targets Python 3.12. Mypy is configured in strict mode for the package and 
 
 ## Bootstrap execution status
 
-This branch deliberately pins Ruff `0.16.3` and Mypy `2.3.1` in the project development dependency group, but it is **not merge-ready** until a trusted environment can resolve those packages, regenerate `uv.lock`, and execute both positive and negative commands with `--frozen`.
+Ruff `0.16.3` and Mypy `2.3.1` are pinned in the project development
+dependency group and in the committed, real `uv.lock`. Their locked positive
+and deliberate-negative commands are composed by `make check`.
 
-The current bootstrap runner has no outbound PyPI connectivity and no preloaded Ruff/Mypy distributions. Hand-authoring the lockfile is prohibited; a real `uv` resolution is required before acceptance evidence can be claimed.
+This traceability document records the gate semantics; the exact CPython 3.12
+qualification receipt remains part of the G0 exit evidence.

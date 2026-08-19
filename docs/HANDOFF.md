@@ -16,9 +16,9 @@ Architecture is frozen. Do not reopen it absent a declared reopening trigger.
 - Architecture frozen: `yes`
 - Current gate: `G0 — Foundation and bootstrap qualification` (issue #1)
 - Current child issue: none
-- Implemented capabilities: `python_3_12_plus_project_metadata`, `uv_lockfile`, `src_package_skeleton`, `architecture_boundary_checker`, `kernel_third_party_deny_by_default`, `architecture_negative_fixtures`, `handoff_manifest_validation`, `bounded_generated_handoff_facts`, `pr_contract_checker`, `adr_structure`, `docs_impact_policy`
-- Completed G0 child issues: #7, #10, #11
-- Active G0 child issues: #8, #9
+- Implemented capabilities: `python_3_12_plus_project_metadata`, `uv_lockfile`, `src_package_skeleton`, `architecture_boundary_checker`, `kernel_third_party_deny_by_default`, `architecture_negative_fixtures`, `handoff_manifest_validation`, `bounded_generated_handoff_facts`, `pr_contract_checker`, `adr_structure`, `docs_impact_policy`, `ruff_strict_mypy_gates`, `pytest_hypothesis_harness`, `reproducible_make_check`
+- Completed G0 child issues: #7, #8, #9, #10, #11, #12
+- Active G0 child issues: none
 - G0 convergence issue: #12
 <!-- END GENERATED HANDOFF FACTS -->
 
@@ -35,7 +35,7 @@ Architecture is frozen. Do not reopen it absent a declared reopening trigger.
 
 Only `G0 — Foundation and bootstrap qualification` is authorized.
 
-G0.1 (#7), executable architecture boundaries (#10), and handoff/docs/PR-contract mechanics (#11) are complete after this merge. Active parallel-foundation work is #8 (Ruff/Mypy) and #9 (Pytest/Hypothesis); they converge at #12 (`make check`). Their existence does not authorize G1 semantics.
+G0.1 (#7), Ruff/Mypy (#8), Pytest/Hypothesis (#9), executable architecture boundaries (#10), handoff/docs/PR-contract mechanics (#11), and the #12 `make check` convergence lane are complete. Their existence does not authorize G1 semantics.
 
 Generated facts in this document and `docs/CURRENT_STATE.md` are derived from `handoff.yaml`. `tools/render_handoff.py` may update only the bounded generated blocks; architectural prose, ADRs, and the constitution remain review-owned.
 
