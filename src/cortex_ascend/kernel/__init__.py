@@ -1,3 +1,12 @@
+from cortex_ascend.kernel.adversarial import (
+    AttackHypothesis,
+    ChaosFault,
+    HoldoutItem,
+    HoldoutSuite,
+    RedTeamReceipt,
+    SeatIdentity,
+    SeatRole,
+)
 from cortex_ascend.kernel.contract import WorkContract
 from cortex_ascend.kernel.lifecycle import Lifecycle
 from cortex_ascend.kernel.predicates import (
@@ -35,17 +44,24 @@ __all__ = [
     "WORKER_PROFILE",
     "AdmissionDecision",
     "ArtifactDigest",
+    "AttackHypothesis",
     "AuthorityGrant",
+    "ChaosFault",
     "Decision",
     "EgressPolicy",
     "EvidenceReceipt",
     "FallbackPolicy",
     "Generation",
+    "HoldoutItem",
+    "HoldoutSuite",
     "Lifecycle",
     "ModelIdentity",
     "ModelLanePolicy",
     "ProjectSnapshot",
+    "RedTeamReceipt",
     "RuntimeProfile",
+    "SeatIdentity",
+    "SeatRole",
     "WorkContract",
     "WorkId",
     "adjudicate",
