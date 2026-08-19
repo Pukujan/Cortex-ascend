@@ -17,8 +17,12 @@ check:
 	$(UV_RUN) pytest -q tests/unit
 	$(UV_RUN) pytest -q tests/property
 	$(UV_RUN) python tools/check_docs.py
+	$(UV_RUN) python tools/check_github_workflows.py
+	$(UV_RUN) python tools/check_secrets.py
 	$(UV) pip check
 	$(UV_RUN) python tools/check_architecture_negative.py
 	$(UV_RUN) python tools/check_static_negative.py
 	$(UV_RUN) python tools/check_test_negative.py
 	$(UV_RUN) python tools/check_docs_negative.py
+	$(UV_RUN) python tools/check_github_workflows_negative.py
+	$(UV_RUN) python tools/check_secrets_negative.py

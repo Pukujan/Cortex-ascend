@@ -2,7 +2,7 @@
 
 **Current decision:** `REVISE -> START G0 ONLY`  
 **Current authorized gate:** `G0 — Foundation and bootstrap qualification`  
-**Current implementation status:** G0.1–G0.6 foundations are complete. No semantic kernel is authorized or implemented.
+**Current implementation status:** G0.1–G0.6 foundations complete. G0.7 (CI/provenance #13) PR open. G0.11 (#17 independent critique) complete, adjudicated, with formal counterexample (architecture checker bypass) tracked for fix.
 
 ## Generated current facts
 
@@ -13,10 +13,10 @@
 - Project status: `REVISE -> START G0 ONLY`
 - Architecture frozen: `yes`
 - Current gate: `G0 — Foundation and bootstrap qualification` (issue #1)
-- Current child issue: none
-- Implemented capabilities: `python_3_12_plus_project_metadata`, `uv_lockfile`, `src_package_skeleton`, `architecture_boundary_checker`, `kernel_third_party_deny_by_default`, `architecture_negative_fixtures`, `handoff_manifest_validation`, `bounded_generated_handoff_facts`, `pr_contract_checker`, `adr_structure`, `docs_impact_policy`, `ruff_strict_mypy_gates`, `pytest_hypothesis_harness`, `reproducible_make_check`
+- Current child issue: #13
+- Implemented capabilities: `python_3_12_plus_project_metadata`, `uv_lockfile`, `src_package_skeleton`, `architecture_boundary_checker`, `kernel_third_party_deny_by_default`, `architecture_negative_fixtures`, `handoff_manifest_validation`, `bounded_generated_handoff_facts`, `pr_contract_checker`, `adr_structure`, `docs_impact_policy`, `ruff_strict_mypy_gates`, `pytest_hypothesis_harness`, `reproducible_make_check`, `github_actions_qualification`, `sha_pinned_third_party_actions`, `cpython_3_12_ci_runtime`, `oidc_future_aws_credential_path`, `credential_history_scanning`, `independent_critic_receipt`
 - Completed G0 child issues: #7, #8, #9, #10, #11, #12
-- Active G0 child issues: none
+- Active G0 child issues: #13, #17
 - G0 convergence issue: #12
 <!-- END GENERATED HANDOFF FACTS -->
 
@@ -48,11 +48,12 @@ Historical Cortex V6 material is donor/evidence/failure-corpus material. It is n
 - ADR structure and documentation-impact policy.
 - locked Ruff, strict Mypy, Pytest, and Hypothesis qualification tooling;
 - deliberate static and test-harness negative fixtures;
-- the G0 `make check` qualification graph with wrapper and propagation-failure evidence.
+- the G0 `make check` qualification graph with wrapper and propagation-failure evidence;
+- SHA-pinned GitHub Actions workflows that run `make check` on CPython 3.12;
+- workflow-policy, OIDC-future-path, and credential/history scanning with deliberate negatives.
 
 ## What does not exist yet
 
-- GitHub Actions qualification workflows;
 - protected-main required rules/checks;
 - semantic kernel;
 - WorkContract/EvidenceReceipt schemas;
@@ -67,11 +68,9 @@ Historical Cortex V6 material is donor/evidence/failure-corpus material. It is n
 
 ## Immediate next work
 
-Only G0 is authorized. G0.1 (#7), G0.2 Ruff/Mypy (#8), G0.3 Pytest/Hypothesis (#9), executable architecture boundaries (#10), and resumability/PR-contract mechanics (#11) are complete.
+Only G0 is authorized. G0.1 (#7), G0.2 Ruff/Mypy (#8), G0.3 Pytest/Hypothesis (#9), executable architecture boundaries (#10), resumability/PR-contract mechanics (#11), and the #12 `make check` convergence lane are complete.
 
-#12 has converged those completed foundation lanes into the single reproducible `make check`, including wrapper-level and propagation-negative acceptance evidence. CI/provenance (#13), protected-main enforcement (#14), consolidated negative qualification (#15), independent critique (#17), and final G0 exit (#18) remain G0 work and follow according to their recorded dependencies. #16 is conditional on consequential use of the bootstrap model lane.
-
-Exact CPython 3.12 execution remains a G0 exit obligation in #13; G0.1 was validated on a satisfying 3.13 interpreter in the available offline bootstrap runner.
+#13 is installing provenance-conscious GitHub Actions: the same `make check` graph, CPython 3.12, SHA-pinned Actions, minimal permissions, credential/history scanning, and OIDC as the future AWS path. Protected-main enforcement (#14) waits for these stable check names. Consolidated negative qualification (#15), independent critique (#17), and final G0 exit (#18) remain later G0 work. #16 is conditional on consequential use of the bootstrap model lane.
 
 ## Credential/bootstrap configuration
 

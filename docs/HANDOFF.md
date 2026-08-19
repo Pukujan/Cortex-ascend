@@ -15,10 +15,10 @@ Architecture is frozen. Do not reopen it absent a declared reopening trigger.
 - Project status: `REVISE -> START G0 ONLY`
 - Architecture frozen: `yes`
 - Current gate: `G0 — Foundation and bootstrap qualification` (issue #1)
-- Current child issue: none
-- Implemented capabilities: `python_3_12_plus_project_metadata`, `uv_lockfile`, `src_package_skeleton`, `architecture_boundary_checker`, `kernel_third_party_deny_by_default`, `architecture_negative_fixtures`, `handoff_manifest_validation`, `bounded_generated_handoff_facts`, `pr_contract_checker`, `adr_structure`, `docs_impact_policy`, `ruff_strict_mypy_gates`, `pytest_hypothesis_harness`, `reproducible_make_check`
+- Current child issue: #13
+- Implemented capabilities: `python_3_12_plus_project_metadata`, `uv_lockfile`, `src_package_skeleton`, `architecture_boundary_checker`, `kernel_third_party_deny_by_default`, `architecture_negative_fixtures`, `handoff_manifest_validation`, `bounded_generated_handoff_facts`, `pr_contract_checker`, `adr_structure`, `docs_impact_policy`, `ruff_strict_mypy_gates`, `pytest_hypothesis_harness`, `reproducible_make_check`, `github_actions_qualification`, `sha_pinned_third_party_actions`, `cpython_3_12_ci_runtime`, `oidc_future_aws_credential_path`, `credential_history_scanning`, `independent_critic_receipt`
 - Completed G0 child issues: #7, #8, #9, #10, #11, #12
-- Active G0 child issues: none
+- Active G0 child issues: #13, #17
 - G0 convergence issue: #12
 <!-- END GENERATED HANDOFF FACTS -->
 
@@ -35,7 +35,7 @@ Architecture is frozen. Do not reopen it absent a declared reopening trigger.
 
 Only `G0 — Foundation and bootstrap qualification` is authorized.
 
-G0.1 (#7), Ruff/Mypy (#8), Pytest/Hypothesis (#9), executable architecture boundaries (#10), handoff/docs/PR-contract mechanics (#11), and the #12 `make check` convergence lane are complete. Their existence does not authorize G1 semantics.
+G0.1 (#7), Ruff/Mypy (#8), Pytest/Hypothesis (#9), executable architecture boundaries (#10), handoff/docs/PR-contract mechanics (#11), and the #12 `make check` convergence lane are complete. #13 GitHub Actions qualification is the active child issue. Their existence does not authorize G1 semantics.
 
 Generated facts in this document and `docs/CURRENT_STATE.md` are derived from `handoff.yaml`. `tools/render_handoff.py` may update only the bounded generated blocks; architectural prose, ADRs, and the constitution remain review-owned.
 

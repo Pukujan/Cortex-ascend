@@ -1,0 +1,40 @@
+name: security-provenance
+
+# Named provenance check for G0. Required-check identity must stay stable for #14.
+# This job does not assume AWS. OIDC is the only permitted future AWS credential path.
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  security-provenance:
+    name: security-provenance
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Install uv
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          python-version: "3.12"
+          version: "0.12.5"
+          checksum: 68a509da24b06b4223a1c0175fb5eb5bc79342b76cbeff0cfe51ac3f5b17b6b2
+          enable-cache: true
+      - name: Verify CPython 3.12
+        run: uv run --frozen python -c "import sys; assert sys.version_info[:2] == (3, 12), sys.version"
+      - name: Workflow policy
+        run: uv run --frozen python tools/check_github_workflows.py
+      - name: Secret and history scan
+        run: uv run --frozen python tools/check_secrets.py
+      - name: Provenance negatives
+        run: uv run --frozen python tools/check_github_workflows_negative.py
+      - name: Secret negatives
+        run: uv run --frozen python tools/check_secrets_negative.py

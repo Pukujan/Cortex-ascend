@@ -15,10 +15,11 @@ same ordered graph in every environment and stops at the first non-zero gate:
 4. The executable architecture-boundary check runs against `src`.
 5. Locked unit and property-test baselines run separately.
 6. The handoff manifest and generated documentation consistency gate runs.
-7. `uv pip check` verifies installed dependency compatibility.
-8. Architecture, static, test-harness, and documentation deliberate-negative
-   harnesses each prove that their invalid fixtures fail with expected
-   diagnostics.
+7. GitHub Actions workflow-policy and credential/history scans run.
+8. `uv pip check` verifies installed dependency compatibility.
+9. Architecture, static, test-harness, documentation, workflow-policy, and
+   secret-scan deliberate-negative harnesses each prove that their invalid
+   fixtures fail with expected diagnostics.
 
 All project tools are invoked through `uv run --frozen`; the lockfile is an
 existing resolved artifact and is never generated or edited by this target.
@@ -28,8 +29,7 @@ positive or negative harness therefore propagates as a failed `make check`.
 
 ## G0 boundary
 
-This target qualifies only the foundation: dependency/tooling discipline,
-static checks, tests, architecture contracts, and handoff/docs consistency. It
-does not add semantic kernel behavior or claim CI/provenance, protected-main,
-consolidated-negative, independent-critic, or final-G0-exit evidence owned by
-later G0 issues.
+This target qualifies the foundation command graph, including the local
+equivalents of CI/provenance policy checks added by #13. It does not add
+semantic kernel behavior or claim protected-main, consolidated-negative,
+independent-critic, or final-G0-exit evidence owned by later G0 issues.
