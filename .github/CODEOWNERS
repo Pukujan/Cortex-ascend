@@ -1,0 +1,23 @@
+# Cortex Ascend ownership policy (G0.8)
+# Every path has a single owner. Wildcards are ordered from most-specific to least-specific.
+
+# Foundation documents are architecture-frozen; only the repository owner may change them.
+/docs/ASCEND_FOUNDATION_AND_BUILD_PLAN.md @Pukujan
+/docs/CONSTITUTION.md @Pukujan
+/docs/PHASE_REQUIREMENTS.md @Pukujan
+/docs/DOCS_IMPACT_POLICY.md @Pukujan
+/docs/adr/ @Pukujan
+/handoff.yaml @Pukujan
+
+# CI/provenance tooling is part of the bootstrap root of trust.
+/.github/ @Pukujan
+/Makefile @Pukujan
+/pyproject.toml @Pukujan
+/.python-version @Pukujan
+/uv.lock @Pukujan
+
+# Tools are admission-oracle code; owner review is required.
+/tools/ @Pukujan
+
+# Default owner for everything else.
+* @Pukujan
