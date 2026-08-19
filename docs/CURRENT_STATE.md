@@ -2,7 +2,7 @@
 
 **Current decision:** `REVISE -> START G0 ONLY`  
 **Current authorized gate:** `G0 — Foundation and bootstrap qualification`  
-**Current implementation status:** G0.1 plus architecture and resumability foundations are complete; the tooling lanes remain active. No semantic kernel is authorized or implemented.
+**Current implementation status:** G0.1–G0.6 foundations are complete. No semantic kernel is authorized or implemented.
 
 ## Generated current facts
 
@@ -14,9 +14,9 @@
 - Architecture frozen: `yes`
 - Current gate: `G0 — Foundation and bootstrap qualification` (issue #1)
 - Current child issue: none
-- Implemented capabilities: `python_3_12_plus_project_metadata`, `uv_lockfile`, `src_package_skeleton`, `architecture_boundary_checker`, `kernel_third_party_deny_by_default`, `architecture_negative_fixtures`, `handoff_manifest_validation`, `bounded_generated_handoff_facts`, `pr_contract_checker`, `adr_structure`, `docs_impact_policy`
-- Completed G0 child issues: #7, #10, #11
-- Active G0 child issues: #8, #9
+- Implemented capabilities: `python_3_12_plus_project_metadata`, `uv_lockfile`, `src_package_skeleton`, `architecture_boundary_checker`, `kernel_third_party_deny_by_default`, `architecture_negative_fixtures`, `handoff_manifest_validation`, `bounded_generated_handoff_facts`, `pr_contract_checker`, `adr_structure`, `docs_impact_policy`, `ruff_strict_mypy_gates`, `pytest_hypothesis_harness`, `reproducible_make_check`
+- Completed G0 child issues: #7, #8, #9, #10, #11, #12
+- Active G0 child issues: none
 - G0 convergence issue: #12
 <!-- END GENERATED HANDOFF FACTS -->
 
@@ -46,11 +46,12 @@ Historical Cortex V6 material is donor/evidence/failure-corpus material. It is n
 - reproducible docs/handoff consistency checker and deliberate negative fixtures;
 - PR contract checker and pull-request template;
 - ADR structure and documentation-impact policy.
+- locked Ruff, strict Mypy, Pytest, and Hypothesis qualification tooling;
+- deliberate static and test-harness negative fixtures;
+- the G0 `make check` qualification graph with wrapper and propagation-failure evidence.
 
 ## What does not exist yet
 
-- Ruff/Mypy/Pytest/Hypothesis project configuration;
-- reproducible `make check`;
 - GitHub Actions qualification workflows;
 - protected-main required rules/checks;
 - semantic kernel;
@@ -66,14 +67,9 @@ Historical Cortex V6 material is donor/evidence/failure-corpus material. It is n
 
 ## Immediate next work
 
-Only G0 is authorized. G0.1 (#7), executable architecture boundaries (#10), and resumability/PR-contract mechanics (#11) are complete after this merge.
+Only G0 is authorized. G0.1 (#7), G0.2 Ruff/Mypy (#8), G0.3 Pytest/Hypothesis (#9), executable architecture boundaries (#10), and resumability/PR-contract mechanics (#11) are complete.
 
-The remaining active parallel-foundation work is:
-
-1. #8 — Ruff + strict Mypy.
-2. #9 — Pytest + Hypothesis baseline.
-
-Those converge at #12, which establishes the single reproducible `make check`. CI/provenance (#13), protected-main enforcement (#14), consolidated negative qualification (#15), independent critique (#17), and final G0 exit (#18) follow according to their recorded dependencies. #16 is conditional on consequential use of the bootstrap model lane.
+#12 has converged those completed foundation lanes into the single reproducible `make check`, including wrapper-level and propagation-negative acceptance evidence. CI/provenance (#13), protected-main enforcement (#14), consolidated negative qualification (#15), independent critique (#17), and final G0 exit (#18) remain G0 work and follow according to their recorded dependencies. #16 is conditional on consequential use of the bootstrap model lane.
 
 Exact CPython 3.12 execution remains a G0 exit obligation in #13; G0.1 was validated on a satisfying 3.13 interpreter in the available offline bootstrap runner.
 

@@ -24,6 +24,9 @@ A Hypothesis failure receipt should preserve the shrunk falsifying example and, 
 
 ## Bootstrap execution status
 
-This branch deliberately pins Pytest `9.1.1` and Hypothesis `6.165.10` in the project development dependency group, but it is **not merge-ready** until a trusted environment can resolve those packages, regenerate `uv.lock`, and execute both positive and deliberate-negative tests with `--frozen`.
+Pytest `9.1.1` and Hypothesis `6.165.10` are pinned in the project
+development dependency group and in the committed, real `uv.lock`. Their
+locked positive and deliberate-negative commands are composed by `make check`.
 
-The current bootstrap runner has no outbound PyPI connectivity and no preloaded Hypothesis distribution. The unrelated globally installed Pytest is not accepted as locked project evidence. Hand-authoring the lockfile is prohibited; a real `uv` resolution is required before acceptance evidence can be claimed.
+This traceability document records the harness semantics; the exact CPython
+3.12 qualification receipt remains part of the G0 exit evidence.

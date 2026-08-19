@@ -29,6 +29,9 @@ current_gate:
     - pr_contract_checker
     - adr_structure
     - docs_impact_policy
+    - ruff_strict_mypy_gates
+    - pytest_hypothesis_harness
+    - reproducible_make_check
   authorized_work:
     - repository foundation
     - linting/formatting/strict typing
@@ -62,11 +65,12 @@ g0_execution:
     - 18
   completed_child_issues:
     - 7
-    - 10
-    - 11
-  active_child_issues:
     - 8
     - 9
+    - 10
+    - 11
+    - 12
+  active_child_issues: []
   parallel_wave_after_g01:
     - 8
     - 9

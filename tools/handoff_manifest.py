@@ -14,6 +14,8 @@ class ManifestError(ValueError):
 
 def _scalar(text: str) -> YamlValue:
     value = text.strip()
+    if value == "[]":
+        return []
     if value == "null":
         return None
     if value == "true":
