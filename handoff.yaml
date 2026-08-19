@@ -3,7 +3,7 @@ project:
   name: Cortex Ascend
   repository: Pukujan/Cortex-ascend
   default_branch: main
-  status: G0 COMPLETE -> AUTHORIZE G1-G2
+  status: G1-G2 ACTIVE
   architecture_frozen: true
 
 authority:
@@ -13,10 +13,10 @@ authority:
   historical_v6_is_authority: false
 
 current_gate:
-  id: G0
-  name: Foundation and bootstrap qualification
-  issue: 1
-  current_child_issue: null
+  id: G1-G2
+  name: Pure kernel, WorkContract, and EvidenceReceipt
+  issue: 2
+  current_child_issue: 2
   implemented_capabilities:
     - python_3_12_plus_project_metadata
     - uv_lockfile
@@ -43,6 +43,12 @@ current_gate:
     - consolidated_negative_qualification_receipt
     - transport_use_rationale_recorded
     - package_root_architecture_enforcement
+    - immutable_kernel_domain_types
+    - work_contract_v1
+    - evidence_receipt_v1
+    - canonical_serialization_and_hashing
+    - pure_admission_predicates
+    - mutation_test_harness
   authorized_work:
     - repository foundation
     - linting/formatting/strict typing
@@ -52,8 +58,11 @@ current_gate:
     - docs/handoff automation
     - sanitized bootstrap transport qualification
     - independent external plan critique
+    - pure kernel domain types
+    - WorkContract and EvidenceReceipt v1
+    - canonical serialization and hash rules
+    - unit/property/mutation tests for kernel predicates
   forbidden_work:
-    - substantive semantic kernel implementation
     - production AgentCore execution
     - broad autonomous repository mutation
     - universal Spec IR implementation
@@ -219,6 +228,6 @@ fresh_session_start:
     - docs/PHASE_REQUIREMENTS_AND_INVARIANTS.md
     - docs/CURRENT_STATE.md
     - handoff.yaml
-    - issue #1
-    - active G0 child issue
-  instruction: do not reopen architecture absent a declared reopening trigger; execute active G0 child issues according to recorded dependencies only
+    - issue #2
+    - active G1-G2 child issue
+  instruction: do not reopen architecture absent a declared reopening trigger; execute active G1-G2 child issues according to recorded dependencies only
