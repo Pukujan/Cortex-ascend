@@ -116,7 +116,7 @@ Neither critic holds admission authority. Findings are preserved below with disp
 **Citation:** check_architecture.py lines 146-149, 174-182.  
 **Why it matters:** Static bypass of FND-001.  
 **Severity: Critical.**  
-**Disposition: Accepted — will be fixed before G0 exit or G1 start.** This is a formal counterexample against FND-001 as mechanically enforced. The checker will be updated to scan `__init__.py` and non-layer package-root files. If not fixed, FND-001 claims will be weakened from "cannot enter" to "cannot enter in the layer-subset scan."
+**Disposition: Fixed before G0 exit.** `tools/check_architecture.py` now scans all `.py` files under `cortex_ascend/` and treats package-root files as kernel-equivalent for third-party import denial. A new negative fixture `tests/architecture/fixtures/package_root_third_party` verifies the fix.
 
 ## Finding 12 — Dynamic import coverage is decorative
 

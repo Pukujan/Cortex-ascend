@@ -145,9 +145,15 @@ def check(root: Path) -> list[Violation]:
 
     for path in sorted(package_root.rglob("*.py")):
         relative = path.relative_to(package_root)
-        if not relative.parts or relative.parts[0] not in LAYERS:
-            continue
-        source_layer = relative.parts[0]
+        if relative.parts and relative.parts[0] in LAYERS:
+            source_layer = relative.parts[0]
+            root_equivalent = False
+        else:
+            # Package-root files are not inside a recognized layer. They are
+            # reachable from any layer (including kernel) via `import cortex_ascend`,
+            # so they must satisfy the strictest third-party deny.
+            source_layer = None
+            root_equivalent = True
 
         try:
             imports = _imports_for_file(path, package_root)
@@ -159,7 +165,7 @@ def check(root: Path) -> list[Violation]:
 
         for module, line in imports:
             target_layer = _layer_from_module(module)
-            if target_layer is not None:
+            if source_layer is not None and target_layer is not None:
                 layer_edges.add((source_layer, target_layer))
                 if target_layer not in ALLOWED_LAYER_IMPORTS[source_layer]:
                     violations.append(
@@ -172,12 +178,17 @@ def check(root: Path) -> list[Violation]:
                 continue
 
             top_level = module.split(".", 1)[0]
-            if source_layer == "kernel" and top_level not in stdlib and top_level != PACKAGE:
+            if (
+                (source_layer == "kernel" or root_equivalent)
+                and top_level not in stdlib
+                and top_level != PACKAGE
+            ):
+                location = "package-root" if root_equivalent else "kernel"
                 violations.append(
                     Violation(
                         str(path),
                         line,
-                        f"prohibited kernel third-party import: {module}",
+                        f"prohibited {location} third-party import: {module}",
                     )
                 )
 

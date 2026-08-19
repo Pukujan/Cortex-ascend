@@ -10,13 +10,13 @@
 > Generated from `handoff.yaml` by `tools/render_handoff.py`. Do not edit this block directly.
 
 - Repository: `Pukujan/Cortex-ascend` (default branch `main`)
-- Project status: `REVISE -> START G0 ONLY`
+- Project status: `G0 COMPLETE -> AUTHORIZE G1-G2`
 - Architecture frozen: `yes`
 - Current gate: `G0 — Foundation and bootstrap qualification` (issue #1)
-- Current child issue: #18
-- Implemented capabilities: `python_3_12_plus_project_metadata`, `uv_lockfile`, `src_package_skeleton`, `architecture_boundary_checker`, `kernel_third_party_deny_by_default`, `architecture_negative_fixtures`, `handoff_manifest_validation`, `bounded_generated_handoff_facts`, `pr_contract_checker`, `adr_structure`, `docs_impact_policy`, `ruff_strict_mypy_gates`, `pytest_hypothesis_harness`, `reproducible_make_check`, `github_actions_qualification`, `sha_pinned_third_party_actions`, `cpython_3_12_ci_runtime`, `oidc_future_aws_credential_path`, `credential_history_scanning`, `independent_critic_receipt`, `codeowners_policy`, `protected_main_with_required_checks`, `consolidated_negative_qualification_receipt`, `transport_use_rationale_recorded`
-- Completed G0 child issues: #7, #8, #9, #10, #11, #12, #13, #14, #15, #16, #17
-- Active G0 child issues: #18
+- Current child issue: none
+- Implemented capabilities: `python_3_12_plus_project_metadata`, `uv_lockfile`, `src_package_skeleton`, `architecture_boundary_checker`, `kernel_third_party_deny_by_default`, `architecture_negative_fixtures`, `handoff_manifest_validation`, `bounded_generated_handoff_facts`, `pr_contract_checker`, `adr_structure`, `docs_impact_policy`, `ruff_strict_mypy_gates`, `pytest_hypothesis_harness`, `reproducible_make_check`, `github_actions_qualification`, `sha_pinned_third_party_actions`, `cpython_3_12_ci_runtime`, `oidc_future_aws_credential_path`, `credential_history_scanning`, `independent_critic_receipt`, `codeowners_policy`, `protected_main_with_required_checks`, `consolidated_negative_qualification_receipt`, `transport_use_rationale_recorded`, `package_root_architecture_enforcement`
+- Completed G0 child issues: #7, #8, #9, #10, #11, #12, #13, #14, #15, #16, #17, #18
+- Active G0 child issues: none
 - G0 convergence issue: #12
 <!-- END GENERATED HANDOFF FACTS -->
 
