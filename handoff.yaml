@@ -16,7 +16,7 @@ current_gate:
   id: G0
   name: Foundation and bootstrap qualification
   issue: 1
-  current_child_issue: 16
+  current_child_issue: 18
   implemented_capabilities:
     - python_3_12_plus_project_metadata
     - uv_lockfile
@@ -41,6 +41,7 @@ current_gate:
     - codeowners_policy
     - protected_main_with_required_checks
     - consolidated_negative_qualification_receipt
+    - transport_use_rationale_recorded
   authorized_work:
     - repository foundation
     - linting/formatting/strict typing
@@ -82,8 +83,10 @@ g0_execution:
     - 13
     - 14
     - 15
-  active_child_issues:
     - 16
+    - 17
+  active_child_issues:
+    - 18
   parallel_wave_after_g01:
     - 8
     - 9

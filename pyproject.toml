@@ -24,6 +24,7 @@ extend-exclude = [
     "tests/ci/fixtures",
     "tests/docs/fixtures",
     "tests/static/fixtures",
+    "litellm-ckff-ops",
 ]
 
 [tool.mypy]
