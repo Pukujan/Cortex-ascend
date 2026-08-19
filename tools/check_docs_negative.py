@@ -44,8 +44,8 @@ def main() -> int:
             text = handoff.read_text(encoding="utf-8")
             handoff.write_text(
                 text.replace(
-                    "status: REVISE -> START G0 ONLY",
-                    "status: REVISE -> START G0 ONLY STALE-PROBE",
+                    "  status: ",
+                    "  status: STALE-PROBE ",
                     1,
                 ),
                 encoding="utf-8",

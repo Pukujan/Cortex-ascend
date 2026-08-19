@@ -3,7 +3,7 @@ project:
   name: Cortex Ascend
   repository: Pukujan/Cortex-ascend
   default_branch: main
-  status: REVISE -> START G0 ONLY
+  status: G0 COMPLETE -> AUTHORIZE G1-G2
   architecture_frozen: true
 
 authority:
@@ -16,7 +16,7 @@ current_gate:
   id: G0
   name: Foundation and bootstrap qualification
   issue: 1
-  current_child_issue: 18
+  current_child_issue: null
   implemented_capabilities:
     - python_3_12_plus_project_metadata
     - uv_lockfile
@@ -42,6 +42,7 @@ current_gate:
     - protected_main_with_required_checks
     - consolidated_negative_qualification_receipt
     - transport_use_rationale_recorded
+    - package_root_architecture_enforcement
   authorized_work:
     - repository foundation
     - linting/formatting/strict typing
@@ -85,8 +86,8 @@ g0_execution:
     - 15
     - 16
     - 17
-  active_child_issues:
     - 18
+  active_child_issues: []
   parallel_wave_after_g01:
     - 8
     - 9

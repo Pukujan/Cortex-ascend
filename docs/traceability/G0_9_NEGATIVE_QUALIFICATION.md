@@ -23,6 +23,7 @@
 | 13 | Unfrozen `uv run` | `tests/ci/fixtures/workflows/unfrozen_uv.yml` | `check_github_workflows_negative.py` | `unfrozen uv run` | ASC-G0-R6 | FND-005 |
 | 14 | Long-lived AWS keys | `tests/ci/fixtures/workflows/long_lived_aws_keys.yml` | `check_github_workflows_negative.py` | `long-lived AWS credential path` | ASC-G0-R6 | FND-005 |
 | 15 | Seeded fake credential | `tests/ci/fixtures/secrets/seeded_fake_credential.txt` | `check_secrets_negative.py` | `aws-access-key-id` and `github-pat` | ASC-G0-R6 | FND-004 |
+| 16 | Package-root third-party import | `tests/architecture/fixtures/package_root_third_party` | `check_architecture_negative.py` | `prohibited package-root third-party import: boto3` | ASC-G0-R4 | FND-001 |
 
 ## Machine-readable receipt
 `tests/ci/negative_receipt.yaml` contains the same mapping in a structured form for future tooling.

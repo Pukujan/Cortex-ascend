@@ -16,6 +16,7 @@ CASES = (
     Case("prohibited_kernel_import", ("prohibited kernel third-party import: boto3",)),
     Case("reverse_layer_import", ("forbidden layer import: kernel -> application",)),
     Case("architecture_cycle", ("architecture cycle:", "application", "ports")),
+    Case("package_root_third_party", ("prohibited package-root third-party import: boto3",)),
 )
 
 

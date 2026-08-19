@@ -22,6 +22,11 @@ negative_checkers:
           - application
           - ports
         expected_exit: non-zero
+      - fixture: tests/architecture/fixtures/package_root_third_party
+        requirement: ASC-G0-R4
+        invariant: ASC-INV-FND-001
+        expected_diagnostic: prohibited package-root third-party import: boto3
+        expected_exit: non-zero
   - tool: tools/check_static_negative.py
     cases:
       - fixture: tests/static/fixtures/ruff_unused_import.py
