@@ -3,7 +3,7 @@ project:
   name: Cortex Ascend
   repository: Pukujan/Cortex-ascend
   default_branch: main
-  status: G8-G10 ACTIVE
+  status: ALL GATES KERNEL-COMPLETE -> OPERATIONAL INTEGRATION GAPS REMAIN
   architecture_frozen: true
 
 authority:
@@ -13,10 +13,10 @@ authority:
   historical_v6_is_authority: false
 
 current_gate:
-  id: G8-G10
-  name: Shadow Ascend admission, gate promotion, and FOSSIL lineage
-  issue: 6
-  current_child_issue: 6
+  id: G0-G10
+  name: Foundation through promotion gates (kernel policy complete)
+  issue: 0
+  current_child_issue: null
   implemented_capabilities:
     - python_3_12_plus_project_metadata
     - uv_lockfile
@@ -159,9 +159,17 @@ g6_g7_execution:
 g8_g10_execution:
   child_issues:
     - 6
-  completed_child_issues: []
-  active_child_issues:
+  completed_child_issues:
     - 6
+  active_child_issues: []
+
+operational_gaps:
+  - aws_oidc_iam_roles
+  - artifact_store_and_verifier_rerun
+  - multi_vendor_model_transport
+  - sealed_holdout_store
+  - github_required_check_integration
+  - real_fossil_integration
 
 next_sequence:
   - gate: G0
@@ -286,6 +294,4 @@ fresh_session_start:
     - docs/PHASE_REQUIREMENTS_AND_INVARIANTS.md
     - docs/CURRENT_STATE.md
     - handoff.yaml
-    - issue #6
-    - active G8-G10 child issue
-  instruction: do not reopen architecture absent a declared reopening trigger; execute active G8-G10 child issues according to recorded dependencies only
+  instruction: all gate issues are kernel-complete; operational integration gaps remain and are listed in handoff.yaml operational_gaps
