@@ -1,0 +1,98 @@
+negative_qualification_version: 1
+receipt_date: 2026-08-19
+harness: make check
+negative_checkers:
+  - tool: tools/check_architecture_negative.py
+    cases:
+      - fixture: tests/architecture/fixtures/prohibited_kernel_import
+        requirement: ASC-G0-R4
+        invariant: ASC-INV-FND-001
+        expected_diagnostic: prohibited kernel third-party import: boto3
+        expected_exit: non-zero
+      - fixture: tests/architecture/fixtures/reverse_layer_import
+        requirement: ASC-G0-R4
+        invariant: ASC-INV-FND-001
+        expected_diagnostic: forbidden layer import: kernel -> application
+        expected_exit: non-zero
+      - fixture: tests/architecture/fixtures/architecture_cycle
+        requirement: ASC-G0-R4
+        invariant: ASC-INV-FND-001
+        expected_diagnostic:
+          - architecture cycle:
+          - application
+          - ports
+        expected_exit: non-zero
+  - tool: tools/check_static_negative.py
+    cases:
+      - fixture: tests/static/fixtures/ruff_unused_import.py
+        requirement: ASC-G0-R3
+        invariant: ASC-INV-FND-002
+        expected_diagnostic: F401
+        expected_exit: non-zero
+      - fixture: tests/static/fixtures/mypy_return_type.py
+        requirement: ASC-G0-R3
+        invariant: ASC-INV-FND-002
+        expected_diagnostic: Incompatible return value type
+        expected_exit: non-zero
+  - tool: tools/check_test_negative.py
+    cases:
+      - fixture: tests/test_harness_fixtures/deterministic_failure
+        requirement: ASC-G0-R5
+        invariant: ASC-INV-FND-002
+        expected_diagnostic: seeded deterministic failure
+        expected_exit: non-zero
+      - fixture: tests/test_harness_fixtures/property_failure
+        requirement: ASC-G0-R5
+        invariant: ASC-INV-FND-002
+        expected_diagnostic:
+          - Failing test case
+          - value=0
+        expected_exit: non-zero
+  - tool: tools/check_docs_negative.py
+    cases:
+      - fixture: synthetic stale handoff.yaml
+        requirement: ASC-G0-R7
+        invariant: ASC-INV-FND-003
+        expected_diagnostic: generated handoff facts are stale
+        expected_exit: non-zero
+      - fixture: tests/docs/fixtures/missing_current_gate
+        requirement: ASC-G0-R7
+        invariant: ASC-INV-FND-003
+        expected_diagnostic: missing mapping 'current_gate'
+        expected_exit: non-zero
+      - fixture: tests/docs/fixtures/pr_missing_requirements.md
+        requirement: ASC-G0-R7
+        invariant: ASC-INV-FND-003
+        expected_diagnostic: missing required PR section: Requirement IDs
+        expected_exit: non-zero
+  - tool: tools/check_github_workflows_negative.py
+    cases:
+      - fixture: tests/ci/fixtures/workflows/movable_action_tag.yml
+        requirement: ASC-G0-R6
+        invariant: ASC-INV-FND-005
+        expected_diagnostic: movable Action tag or non-SHA pin
+        expected_exit: non-zero
+      - fixture: tests/ci/fixtures/workflows/excessive_permissions.yml
+        requirement: ASC-G0-R6
+        invariant: ASC-INV-FND-005
+        expected_diagnostic: excessive permissions
+        expected_exit: non-zero
+      - fixture: tests/ci/fixtures/workflows/unfrozen_uv.yml
+        requirement: ASC-G0-R6
+        invariant: ASC-INV-FND-005
+        expected_diagnostic: unfrozen uv run
+        expected_exit: non-zero
+      - fixture: tests/ci/fixtures/workflows/long_lived_aws_keys.yml
+        requirement: ASC-G0-R6
+        invariant: ASC-INV-FND-005
+        expected_diagnostic: long-lived AWS credential path
+        expected_exit: non-zero
+  - tool: tools/check_secrets_negative.py
+    cases:
+      - fixture: tests/ci/fixtures/secrets/seeded_fake_credential.txt
+        requirement: ASC-G0-R6
+        invariant: ASC-INV-FND-004
+        expected_diagnostic:
+          - aws-access-key-id
+          - github-pat
+        expected_exit: non-zero
