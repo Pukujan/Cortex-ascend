@@ -3,7 +3,7 @@ project:
   name: Cortex Ascend
   repository: Pukujan/Cortex-ascend
   default_branch: main
-  status: G3 COMPLETE -> AUTHORIZE G4-G5
+  status: G4-G5 ACTIVE
   architecture_frozen: true
 
 authority:
@@ -13,10 +13,10 @@ authority:
   historical_v6_is_authority: false
 
 current_gate:
-  id: G3
-  name: Stale-generation lifecycle semantics and formalism selection
-  issue: 3
-  current_child_issue: null
+  id: G4-G5
+  name: Qualify model lanes and separate AgentCore worker/verifier trust domains
+  issue: 4
+  current_child_issue: 4
   implemented_capabilities:
     - python_3_12_plus_project_metadata
     - uv_lockfile
@@ -52,6 +52,8 @@ current_gate:
     - stale_generation_lifecycle_model
     - tla_plus_lifecycle_spec
     - formalism_bakeoff_adr
+    - model_lane_policy
+    - worker_verifier_runtime_profiles
   authorized_work:
     - repository foundation
     - linting/formatting/strict typing
@@ -67,6 +69,7 @@ current_gate:
     - unit/property/mutation tests for kernel predicates
     - stale-generation lifecycle semantics
     - TLA+ formal modeling
+    - kernel-side model lane and runtime profile policies
   forbidden_work:
     - production AgentCore execution
     - broad autonomous repository mutation
@@ -125,6 +128,13 @@ g3_execution:
   completed_child_issues:
     - 3
   active_child_issues: []
+
+g4_g5_execution:
+  child_issues:
+    - 4
+  completed_child_issues: []
+  active_child_issues:
+    - 4
 
 next_sequence:
   - gate: G0
