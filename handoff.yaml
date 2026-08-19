@@ -3,7 +3,7 @@ project:
   name: Cortex Ascend
   repository: Pukujan/Cortex-ascend
   default_branch: main
-  status: G4-G5 ACTIVE
+  status: G6-G7 ACTIVE
   architecture_frozen: true
 
 authority:
@@ -13,10 +13,10 @@ authority:
   historical_v6_is_authority: false
 
 current_gate:
-  id: G4-G5
-  name: Qualify model lanes and separate AgentCore worker/verifier trust domains
-  issue: 4
-  current_child_issue: 4
+  id: G6-G7
+  name: Adversarial inference, specialist counterexample search, sealed holdout, and chaos
+  issue: 5
+  current_child_issue: 5
   implemented_capabilities:
     - python_3_12_plus_project_metadata
     - uv_lockfile
@@ -54,6 +54,10 @@ current_gate:
     - formalism_bakeoff_adr
     - model_lane_policy
     - worker_verifier_runtime_profiles
+    - adversarial_seat_identity
+    - attack_hypothesis_receipt
+    - sealed_holdout_suite
+    - declared_chaos_fault_schedule
   authorized_work:
     - repository foundation
     - linting/formatting/strict typing
@@ -70,6 +74,9 @@ current_gate:
     - stale-generation lifecycle semantics
     - TLA+ formal modeling
     - kernel-side model lane and runtime profile policies
+    - adversarial seat identity and attack-hypothesis structures
+    - sealed holdout suite metadata
+    - declared chaos fault schedules
   forbidden_work:
     - production AgentCore execution
     - broad autonomous repository mutation
@@ -132,9 +139,16 @@ g3_execution:
 g4_g5_execution:
   child_issues:
     - 4
+  completed_child_issues:
+    - 4
+  active_child_issues: []
+
+g6_g7_execution:
+  child_issues:
+    - 5
   completed_child_issues: []
   active_child_issues:
-    - 4
+    - 5
 
 next_sequence:
   - gate: G0
@@ -259,6 +273,6 @@ fresh_session_start:
     - docs/PHASE_REQUIREMENTS_AND_INVARIANTS.md
     - docs/CURRENT_STATE.md
     - handoff.yaml
-    - issue #4
-    - active G4-G5 child issue
-  instruction: do not reopen architecture absent a declared reopening trigger; execute active G4-G5 child issues according to recorded dependencies only
+    - issue #5
+    - active G6-G7 child issue
+  instruction: do not reopen architecture absent a declared reopening trigger; execute active G6-G7 child issues according to recorded dependencies only
