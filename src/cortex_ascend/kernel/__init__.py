@@ -1,4 +1,5 @@
 from cortex_ascend.kernel.contract import WorkContract
+from cortex_ascend.kernel.lifecycle import Lifecycle
 from cortex_ascend.kernel.predicates import (
     adjudicate,
     adjudicate_against_base,
@@ -28,6 +29,7 @@ __all__ = [
     "Decision",
     "EvidenceReceipt",
     "Generation",
+    "Lifecycle",
     "ModelIdentity",
     "ProjectSnapshot",
     "WorkContract",
