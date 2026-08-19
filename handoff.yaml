@@ -3,7 +3,7 @@ project:
   name: Cortex Ascend
   repository: Pukujan/Cortex-ascend
   default_branch: main
-  status: G6-G7 ACTIVE
+  status: G8-G10 ACTIVE
   architecture_frozen: true
 
 authority:
@@ -13,10 +13,10 @@ authority:
   historical_v6_is_authority: false
 
 current_gate:
-  id: G6-G7
-  name: Adversarial inference, specialist counterexample search, sealed holdout, and chaos
-  issue: 5
-  current_child_issue: 5
+  id: G8-G10
+  name: Shadow Ascend admission, gate promotion, and FOSSIL lineage
+  issue: 6
+  current_child_issue: 6
   implemented_capabilities:
     - python_3_12_plus_project_metadata
     - uv_lockfile
@@ -58,6 +58,9 @@ current_gate:
     - attack_hypothesis_receipt
     - sealed_holdout_suite
     - declared_chaos_fault_schedule
+    - ascend_audit_mode
+    - gate_promotion_policy
+    - fossil_receipt_placeholder
   authorized_work:
     - repository foundation
     - linting/formatting/strict typing
@@ -77,6 +80,9 @@ current_gate:
     - adversarial seat identity and attack-hypothesis structures
     - sealed holdout suite metadata
     - declared chaos fault schedules
+    - Ascend audit-mode admission comparison
+    - gate promotion policy
+    - FOSSIL receipt placeholder
   forbidden_work:
     - production AgentCore execution
     - broad autonomous repository mutation
@@ -146,9 +152,16 @@ g4_g5_execution:
 g6_g7_execution:
   child_issues:
     - 5
+  completed_child_issues:
+    - 5
+  active_child_issues: []
+
+g8_g10_execution:
+  child_issues:
+    - 6
   completed_child_issues: []
   active_child_issues:
-    - 5
+    - 6
 
 next_sequence:
   - gate: G0
@@ -273,6 +286,6 @@ fresh_session_start:
     - docs/PHASE_REQUIREMENTS_AND_INVARIANTS.md
     - docs/CURRENT_STATE.md
     - handoff.yaml
-    - issue #5
-    - active G6-G7 child issue
-  instruction: do not reopen architecture absent a declared reopening trigger; execute active G6-G7 child issues according to recorded dependencies only
+    - issue #6
+    - active G8-G10 child issue
+  instruction: do not reopen architecture absent a declared reopening trigger; execute active G8-G10 child issues according to recorded dependencies only
