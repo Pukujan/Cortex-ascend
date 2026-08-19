@@ -21,6 +21,7 @@ target-version = "py312"
 line-length = 100
 extend-exclude = [
     "tests/architecture/fixtures",
+    "tests/ci/fixtures",
     "tests/docs/fixtures",
     "tests/static/fixtures",
 ]
@@ -29,7 +30,7 @@ extend-exclude = [
 python_version = "3.12"
 strict = true
 files = ["src/cortex_ascend", "tools"]
-exclude = "(^|/)tests/(architecture|docs|static)/fixtures/"
+exclude = "(^|/)tests/(architecture|ci|docs|static)/fixtures/"
 
 [tool.pytest.ini_options]
 testpaths = ["tests/unit", "tests/property"]

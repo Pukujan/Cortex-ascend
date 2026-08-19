@@ -16,7 +16,7 @@ current_gate:
   id: G0
   name: Foundation and bootstrap qualification
   issue: 1
-  current_child_issue: null
+  current_child_issue: 13
   implemented_capabilities:
     - python_3_12_plus_project_metadata
     - uv_lockfile
@@ -32,6 +32,11 @@ current_gate:
     - ruff_strict_mypy_gates
     - pytest_hypothesis_harness
     - reproducible_make_check
+    - github_actions_qualification
+    - sha_pinned_third_party_actions
+    - cpython_3_12_ci_runtime
+    - oidc_future_aws_credential_path
+    - credential_history_scanning
   authorized_work:
     - repository foundation
     - linting/formatting/strict typing
@@ -70,7 +75,8 @@ g0_execution:
     - 10
     - 11
     - 12
-  active_child_issues: []
+  active_child_issues:
+    - 13
   parallel_wave_after_g01:
     - 8
     - 9
@@ -98,8 +104,14 @@ next_sequence:
 stable_invariants:
   - id: ASC-INV-FND-001
     summary: prohibited infrastructure dependencies cannot enter kernel while required checks are green
+  - id: ASC-INV-FND-002
+    summary: local make check and CI execute the same qualification semantics
   - id: ASC-INV-FND-003
     summary: semantic changes cannot be merge-complete with stale required handoff/current-state docs
+  - id: ASC-INV-FND-004
+    summary: no credential value is committed to repository history
+  - id: ASC-INV-FND-005
+    summary: green CI is not qualification-grade evidence unless G0 CI/provenance controls are active
   - id: ASC-INV-KRN-001
     summary: stale project base or generation cannot satisfy current-work evidence requirements
   - id: ASC-INV-KRN-003
