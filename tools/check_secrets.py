@@ -102,46 +102,57 @@ def scan_tracked(root: Path) -> list[Finding]:
 
 
 def scan_history(root: Path) -> list[Finding]:
-    needles = (
-        ("aws-access-key-id", "AKIA"),
-        ("github-pat", "ghp_"),
-        ("github-fine-grained-pat", "github_pat_"),
-        ("private-key", "PRIVATE KEY-----"),
-    )
+    commits_result = _git(root, "rev-list", "--all")
+    if commits_result.returncode != 0:
+        return [
+            Finding(
+                str(root),
+                0,
+                "git-history",
+                f"git rev-list failed: {commits_result.stderr.strip()}",
+            )
+        ]
+
+    combined = "|".join(f"({pattern.pattern})" for _, pattern in PATTERNS)
     findings: list[Finding] = []
-    for kind, needle in needles:
+    for commit in commits_result.stdout.splitlines():
         result = _git(
             root,
-            "log",
-            "--all",
-            "-S",
-            needle,
-            "--pretty=format:%H",
+            "grep",
+            "-I",
+            "-n",
+            "-E",
+            combined,
+            commit,
             "--",
             ".",
-            ":(exclude)tests/ci/fixtures/secrets",
+            ":(exclude)tests/ci/fixtures/secrets/**",
         )
-        if result.returncode != 0:
+        if result.returncode not in {0, 1}:
             findings.append(
                 Finding(
-                    str(root),
+                    commit,
                     0,
                     "git-history",
-                    f"git log failed: {result.stderr.strip() or result.stdout.strip()}",
+                    f"git grep failed: {result.stderr.strip()}",
                 )
             )
             continue
-        for commit in result.stdout.splitlines():
-            commit = commit.strip()
-            if commit:
-                findings.append(
-                    Finding(
-                        commit,
-                        0,
-                        kind,
-                        "credential pattern present in commit history",
+        for match in result.stdout.splitlines():
+            path_and_line, _, text = match.partition(":")
+            path, _, line_text = text.partition(":")
+            if not path or not line_text:
+                continue
+            for kind, pattern in PATTERNS:
+                if pattern.search(line_text):
+                    findings.append(
+                        Finding(
+                            path,
+                            int(path_and_line.rsplit(":", 1)[-1]) if ":" in path_and_line else 0,
+                            kind,
+                            f"commit {commit}",
+                        )
                     )
-                )
     return findings
 
 
