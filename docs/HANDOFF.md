@@ -2,9 +2,9 @@
 
 ## Decision
 
-`REVISE -> START G0 ONLY`
+`ALL GATES KERNEL-COMPLETE -> OPERATIONAL INTEGRATION GAPS REMAIN`
 
-Architecture is frozen. Do not reopen it absent a declared reopening trigger.
+Architecture is frozen. Operational integration gaps (AWS IAM/OIDC, artifact store, multi-vendor transport, sealed holdout store, GitHub required checks, real FOSSIL) remain. Do not reopen architecture absent a declared reopening trigger.
 
 ## Generated current facts
 
@@ -16,7 +16,7 @@ Architecture is frozen. Do not reopen it absent a declared reopening trigger.
 - Architecture frozen: `yes`
 - Current gate: `G0-G10 — Foundation through promotion gates (kernel policy complete)` (issue #0)
 - Current child issue: none
-- Implemented capabilities: `python_3_12_plus_project_metadata`, `uv_lockfile`, `src_package_skeleton`, `architecture_boundary_checker`, `kernel_third_party_deny_by_default`, `architecture_negative_fixtures`, `handoff_manifest_validation`, `bounded_generated_handoff_facts`, `pr_contract_checker`, `adr_structure`, `docs_impact_policy`, `ruff_strict_mypy_gates`, `pytest_hypothesis_harness`, `reproducible_make_check`, `github_actions_qualification`, `sha_pinned_third_party_actions`, `cpython_3_12_ci_runtime`, `oidc_future_aws_credential_path`, `credential_history_scanning`, `independent_critic_receipt`, `codeowners_policy`, `protected_main_with_required_checks`, `consolidated_negative_qualification_receipt`, `transport_use_rationale_recorded`, `package_root_architecture_enforcement`, `immutable_kernel_domain_types`, `work_contract_v1`, `evidence_receipt_v1`, `canonical_serialization_and_hashing`, `pure_admission_predicates`, `mutation_test_harness`, `stale_generation_lifecycle_model`, `tla_plus_lifecycle_spec`, `formalism_bakeoff_adr`, `model_lane_policy`, `worker_verifier_runtime_profiles`, `adversarial_seat_identity`, `attack_hypothesis_receipt`, `sealed_holdout_suite`, `declared_chaos_fault_schedule`, `ascend_audit_mode`, `gate_promotion_policy`, `fossil_receipt_placeholder`
+- Implemented capabilities: `python_3_12_plus_project_metadata`, `uv_lockfile`, `src_package_skeleton`, `architecture_boundary_checker`, `kernel_third_party_deny_by_default`, `architecture_negative_fixtures`, `handoff_manifest_validation`, `bounded_generated_handoff_facts`, `pr_contract_checker`, `adr_structure`, `docs_impact_policy`, `ruff_strict_mypy_gates`, `pytest_hypothesis_harness`, `reproducible_make_check`, `github_actions_qualification`, `sha_pinned_third_party_actions`, `cpython_3_12_ci_runtime`, `oidc_future_aws_credential_path`, `credential_history_scanning`, `independent_critic_receipt`, `codeowners_policy`, `protected_main_with_required_checks`, `consolidated_negative_qualification_receipt`, `transport_use_rationale_recorded`, `package_root_architecture_enforcement`, `immutable_kernel_domain_types`, `work_contract_v1`, `evidence_receipt_v1`, `canonical_serialization_and_hashing`, `pure_admission_predicates`, `mutation_test_harness`, `stale_generation_lifecycle_model`, `tla_plus_lifecycle_spec`, `formalism_bakeoff_adr`, `model_lane_policy`, `worker_verifier_runtime_profiles`, `adversarial_seat_identity`, `cross_vendor_seat_gating`, `graybox_execution_check`, `attack_hypothesis_receipt`, `sealed_holdout_suite`, `declared_chaos_fault_schedule`, `ascend_audit_mode`, `gate_promotion_policy`, `fossil_receipt_placeholder`
 - Completed G0 child issues: #7, #8, #9, #10, #11, #12, #13, #14, #15, #16, #17, #18
 - Active G0 child issues: none
 - G0 convergence issue: #12
@@ -33,9 +33,7 @@ Architecture is frozen. Do not reopen it absent a declared reopening trigger.
 
 ## Current authorization
 
-Only `G0 — Foundation and bootstrap qualification` is authorized.
-
-G0.1 (#7), Ruff/Mypy (#8), Pytest/Hypothesis (#9), executable architecture boundaries (#10), handoff/docs/PR-contract mechanics (#11), and the #12 `make check` convergence lane are complete. #13 GitHub Actions qualification is the active child issue. Their existence does not authorize G1 semantics.
+All kernel-policy gates `G0-G10` are complete. Remaining work is operational integration: AWS IAM/OIDC roles, artifact store and verifier rerun, multi-vendor model transport qualification, sealed holdout store, GitHub required-check integration, and real FOSSIL integration.
 
 Generated facts in this document and `docs/CURRENT_STATE.md` are derived from `handoff.yaml`. `tools/render_handoff.py` may update only the bounded generated blocks; architectural prose, ADRs, and the constitution remain review-owned.
 
@@ -59,6 +57,16 @@ Build a foundation that mechanically rejects bad architecture and stale project 
 - sanitized OpenCode/LiteLLM bootstrap qualification if used for consequential development;
 - one genuinely independent external critic pass before G1.
 
+## Kernel-complete scope (G1-G10)
+
+The following kernel-policy structures are implemented and covered by deterministic tests. Operational integration (live model transport, artifact store, worker/verifier environments, real FOSSIL) remains open:
+
+- G1–G2: immutable pure-kernel domain types, `WorkContract`, `EvidenceReceipt`, canonical serialization/hashing, deterministic admission predicates;
+- G3: stale-generation lifecycle model, TLA+ formalism selection ADR;
+- G4–G5: kernel-side model-lane policy, worker/verifier runtime profiles, trust-domain separation;
+- G6–G7: adversarial seat identity, cross-vendor seat gating, attack-hypothesis structures, sealed holdout suite metadata, declared chaos fault schedules, graybox execution check;
+- G8–G10: Ascend audit-mode admission comparison, gate promotion policy, FOSSIL receipt placeholder.
+
 ## Stable architectural direction
 
 ```text
@@ -79,14 +87,16 @@ Git/GitHub owns current executable project state. FOSSIL later owns durable inte
 
 ## Later sequence — not yet authorized
 
-- G1–G2: pure kernel, WorkContract, EvidenceReceipt.
-- G3: stale-generation distributed invariant; compare TLA+/P/FizzBee and keep one primary formalism.
-- G4–G5: qualify OpenCode/LiteLLM/Qwen and AgentCore worker/verifier separation.
-- G6–G7: adversarial inference, Qwen scaling, VibeThinker formal-adversary benchmark, semantic mutation, sealed holdout, chaos.
-- G8–G9: Ascend audit-only, then promotion to required admission gate only after external conformance.
-- G10: real FOSSIL lineage integration.
+Operational integration only:
 
-Lean is optional and enters only for a theorem-shaped pure-kernel obligation that earns its additional cost.
+- AWS IAM/OIDC roles and artifact store;
+- multi-vendor model transport qualification;
+- AgentCore worker/verifier runtime environments;
+- sealed holdout store with verifier access controls;
+- GitHub required-check integration on protected main;
+- real FOSSIL lineage integration.
+
+No further kernel semantics may be added until the corresponding operational gap is closed and the architecture is reopened through a declared trigger.
 
 ## Secrets/configuration
 

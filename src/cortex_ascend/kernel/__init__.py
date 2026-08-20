@@ -4,8 +4,12 @@ from cortex_ascend.kernel.adversarial import (
     HoldoutItem,
     HoldoutSuite,
     RedTeamReceipt,
+    SeatAssignment,
+    SeatAssignmentError,
     SeatIdentity,
+    SeatPlan,
     SeatRole,
+    validate_seat_plan,
 )
 from cortex_ascend.kernel.contract import WorkContract
 from cortex_ascend.kernel.lifecycle import Lifecycle
@@ -77,7 +81,10 @@ __all__ = [
     "ProjectSnapshot",
     "RedTeamReceipt",
     "RuntimeProfile",
+    "SeatAssignment",
+    "SeatAssignmentError",
     "SeatIdentity",
+    "SeatPlan",
     "SeatRole",
     "WorkContract",
     "WorkId",
@@ -93,4 +100,5 @@ __all__ = [
     "is_evidence_bound",
     "is_fresh",
     "model_identity_compatible",
+    "validate_seat_plan",
 ]

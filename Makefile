@@ -16,6 +16,7 @@ check:
 	$(UV_RUN) python tools/check_architecture.py --root src
 	$(UV_RUN) pytest -q tests/unit
 	$(UV_RUN) pytest -q tests/property
+	$(UV_RUN) pytest -q tests/integration
 	$(UV_RUN) python tools/check_docs.py
 	$(UV_RUN) python tools/check_github_workflows.py
 	$(UV_RUN) python tools/check_secrets.py

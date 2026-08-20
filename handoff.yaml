@@ -55,6 +55,8 @@ current_gate:
     - model_lane_policy
     - worker_verifier_runtime_profiles
     - adversarial_seat_identity
+    - cross_vendor_seat_gating
+    - graybox_execution_check
     - attack_hypothesis_receipt
     - sealed_holdout_suite
     - declared_chaos_fault_schedule

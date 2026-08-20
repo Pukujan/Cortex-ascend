@@ -14,7 +14,9 @@ evaluation mechanically grounded and isolated, per issue #5.
 | Sealed holdout suite | `src/cortex_ascend/kernel/adversarial.py` | `HoldoutItem` + `HoldoutSuite`; public metadata only |
 | Chaos fault | `src/cortex_ascend/kernel/adversarial.py` | `ChaosFault` with schedule, target invariant, expected outcome |
 | Red-team receipt | `src/cortex_ascend/kernel/adversarial.py` | `RedTeamReceipt` linking seat, hypothesis, and harness result |
-| Tests | `tests/unit/test_kernel_adversarial.py` | 5 tests covering identity, dedup, holdout fingerprint, chaos, receipts |
+| Cross-vendor seat gate | `src/cortex_ascend/kernel/adversarial.py` | `SeatPlan` rejects overlapping producer, red-team, or executioner vendor/model-family assignments and unauthorized actual-model substitutions before inference |
+| Graybox execution receipt | `docs/traceability/G6_G7_GRAYBOX_RECEIPT.md` | Sanitized receipt with local/remote digest matching and a second isolated rerun |
+| Tests | `tests/unit/test_kernel_adversarial.py`, `tests/integration/test_graybox_seat_plan.py` | 11 unit tests and 1 integration test covering identity, dedup, holdout fingerprint, chaos, receipts, seating rejections, and graybox seat-plan admission |
 
 ## Invariants supported
 
@@ -32,7 +34,7 @@ evaluation mechanically grounded and isolated, per issue #5.
 | Dedup/novelty pipeline | Requires model output normalization; fingerprint field reserved. |
 | Private verifier-controlled sealed holdout store | Requires encrypted storage and access controls. |
 | Declared chaos fault schedules executed by deterministic harnesses | Requires harness wiring; `ChaosFault` structure defined. |
-| Cross-vendor seat gating (issue #28) | Requires multi-vendor transport setup. |
+| Graybox executioner isolation | `tools/run_graybox_check.py` verifies an exact content digest after transfer, then runs `make check` in a read-only, network-disabled container; no model transport is involved. |
 
 ## Exit criteria status
 
@@ -43,6 +45,7 @@ evaluation mechanically grounded and isolated, per issue #5.
 | Semantic mutants and chaos schedules executed by deterministic harnesses | Partial — structures defined; harness integration pending. |
 | Stale-generation/retry corpus survives adversarial and chaos cases | Pending — requires harness integration. |
 | VibeThinker benchmark-justified or removed | Pending — requires model access. |
+| Producer, red teams, and executioner have distinct vendor/model families | Enforced before inference by `validate_seat_plan`; executioner runtime isolation is exercised by `tools/run_graybox_check.py`. |
 
 ## Recommendation
 G6-G7 is **policy-structure complete** but **model/runtime integration incomplete**.

@@ -34,6 +34,6 @@ files = ["src/cortex_ascend", "tools"]
 exclude = "(^|/)tests/(architecture|ci|docs|static)/fixtures/"
 
 [tool.pytest.ini_options]
-testpaths = ["tests/unit", "tests/property"]
+testpaths = ["tests/unit", "tests/property", "tests/integration"]
 pythonpath = ["src"]
 addopts = ["--strict-config", "--strict-markers"]
